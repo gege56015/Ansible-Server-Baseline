@@ -1,0 +1,6 @@
+__pycache__/
+inventories/
+*.retry
+*.py[cod]
+*.bak
+

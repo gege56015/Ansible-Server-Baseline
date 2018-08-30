@@ -1,0 +1,6 @@
+[submodule "roles/Ansible-Ubuntu-Common"]
+	path = roles/Ansible-Ubuntu-Common
+	url = https://github.com/gege56015/Ansible-Ubuntu-Common.git
+[submodule "roles/Ansible-Docker-Common"]
+	path = roles/Ansible-Docker-Common
+	url = https://github.com/gege56015/Ansible-Docker-Common.git

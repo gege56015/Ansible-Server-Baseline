@@ -1,0 +1,35 @@
+- name: Configure the Server and install required software
+# ========================================================
+  hosts: target-hosts
+
+  remote_user: "root"
+  become: true
+
+  vars_prompt:
+
+    - name: "new_hostname"
+      prompt: "\nWhat should this host be named? Press enter for default (general).\n"
+      default: "general"
+      private: no
+    
+    - name: "notifications_email"
+      prompt: "\nWhat email should be used for system notifications? Press enter for default (myemail@email.com).\n"
+      default: "myemail@email.com"
+      private: no
+      
+    - name: "is_docker_container_host"
+      prompt: "\nWill this host be running docker containers? (Y/n)\n"
+      default: "y"
+      private: no
+
+      
+  roles:
+     - Ansible-Ubuntu-Common
+     - { role: Ansible-Docker-Common, when: is_docker_container_host == 'y' }
+     
+     
+  tasks:
+  - name: Report server IPs
+    debug: 
+      msg:
+        - "Server IP: {{ ansible_all_ipv4_addresses }}"
